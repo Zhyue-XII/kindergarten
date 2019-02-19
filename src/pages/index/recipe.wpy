@@ -1,0 +1,88 @@
+<template>
+  <view class="page">
+    <view class="update_time">更新时间：{{update_time}} <image src="../../static/sys_icon/clock.png" /></view>
+    <repeat for="{{food}}" index="index" item="item">
+      <view class="card">
+        <view class="day">{{item.day}}</view>
+        <repeat for="{{item.list}}" item="list">
+          <view class="card_item">
+            <view class="time">{{list.time}}</view>
+            <view class="food_img">
+              <image src="{{list.pic}}" />
+              <view>
+                <text>{{list.eat}}</text>
+              </view>
+            </view>
+          </view>
+        </repeat>
+      </view>
+    </repeat>
+  </view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class School extends wepy.page {
+  config = {
+    navigationBarTitleText: '营养食谱'
+  };
+  data = {
+    update_time: '',
+    food: []
+  }
+  onLoad () {
+    this.update_time = '2018-12-15 19:35:12'
+    this.food = [
+      {
+        day: '星期一',
+        list: [
+          { time: '早饭', eat: '牛奶,鸡蛋', pic: '../../static/images/e1.jpg' },
+          { time: '早加餐', eat: '牛奶,鸡蛋', pic: '../../static/images/e1.jpg' },
+          { time: '午饭', eat: '牛奶,鸡蛋', pic: '../../static/images/e1.jpg' },
+          { time: '午加餐', eat: '牛奶,鸡蛋', pic: '../../static/images/e1.jpg' }
+        ]
+      }
+    ]
+  }
+}
+</script>
+
+<style lang="less">
+.page {
+  background: #e6e6e6;
+  padding-top: 5px;
+}
+.card {
+  background: white;
+  margin-bottom: 5px;
+  padding: 2%;
+  overflow: hidden;
+}
+.card_item {
+  float: left;
+  width: 25%;
+  text-align: center;
+  font-size: 13px;
+}
+.food_img image {
+  width: 70px;
+  height: 45px;
+}
+.day {
+  font-size: 16px;
+}
+.time {
+  padding: 10% 0;
+}
+.update_time{
+  background:white;
+  margin-bottom:4px;
+  padding:2%;
+  font-size:16px;
+  color:gray;
+}
+.update_time image{
+  width: 25px;
+  height: 25px;
+  float: right;
+}
+</style>

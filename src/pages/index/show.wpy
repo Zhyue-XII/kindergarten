@@ -1,0 +1,52 @@
+<template>
+  <view>
+    <view class="show_view">
+      <view class="show_title">小朋友开心快乐的一天..</view>
+      <repeat for="{{show}}" index="index" item="item">
+        <view class="show_text"><text>{{item.text}}</text></view>
+        <view class="show_img">
+          <image src="{{item.pic}}" />
+        </view>
+      </repeat>
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Show extends wepy.page {
+  config = {
+    navigationBarTitleText: '教学展示 '
+  }
+  data = {
+    show: []
+  }
+  onLoad () {
+    this.show = [
+      { text: '开心的玩耍，开心的讲故事', pic: '../../static/images/y6.jpg' },
+      { text: '然后老师会带着小朋友们去做游戏', pic: '../../static/images/y5.jpg' },
+      { text: '中午了，该吃个饭补充一下能量，不然怎么有力气玩儿呢？', pic: '../../static/images/y7.jpg' },
+      { text: '是时候休息，不要惊扰了祖国的小花朵..', pic: '../../static/images/y8.jpg' },
+      { text: '开心的玩耍，开心的讲故事', pic: '../../static/images/y9.jpg' }
+    ]
+  }
+}
+</script>
+
+<style lang="less">
+.show_view{
+  padding: 4%
+}
+.show_title{
+  text-align: center;
+}
+.show_img image{
+  width: 100%;
+}
+.show_text{
+  font-size: 16px;
+  color: gray;
+  padding: 3% 0;
+}
+</style>

@@ -1,0 +1,48 @@
+<template>
+  <view>
+    <view class="weui-article">
+      <!-- <repeat for="{{article}}"> -->
+        <view class="weui-article__h1">{{article.title}}</view>
+        <view class="weui-article__section">
+          <!-- <view class="weui-article__title">章标题</view> -->
+          <view class="weui-article__section">
+            <view class="weui-article__p">{{article.text}}</view>
+            <view class="weui-article__p">
+              <image class="article_img" src="{{article.pic}}" mode="aspectFit" />
+            </view>
+            <view class="weui-article__p">{{article.text}}</view>
+          </view>
+        </view>
+      <!-- </repeat> -->
+    </view>
+  </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class School extends wepy.page {
+  config = {
+    navigationBarTitleText: '校园动态'
+  };
+  data = {
+    article: ''
+  };
+  onLoad () {
+    this.article = {
+      title: '红星幼儿园',
+      text: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。',
+      pic: '../../static/images/0.jpg'
+    }
+  }
+}
+</script>
+
+<style lang="less">
+  @import url('../../static/style/weui.wxss');
+  
+  .article_img{
+    width: 100%;
+    margin: -30px 0;
+  }
+</style>

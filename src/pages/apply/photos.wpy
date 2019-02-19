@@ -1,0 +1,92 @@
+<template>
+<view class="pages">
+  <repeat for="{{photos}}" item="item">
+    <view>
+      <view class="pthots_date">
+        <text>{{item.date}}</text>
+        <image class="icon_more" src="../../static/sys_icon/more.png"/>
+      </view>
+      <view class="photos_view">
+        <view class="page_section">
+          <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
+            <repeat for="{{item.imgs}}" item="list">
+              <image class="scroll-view-item_H" src="{{list.img}}"/>
+            </repeat>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+  </repeat>
+</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Photos extends wepy.page {
+  config = {
+    navigationBarTitleText: '班级照片'
+  }
+  data = {
+    photos: [
+      {
+        date: '2019年1月',
+        imgs: [
+          { img: '../../static/images/y1.jpg' },
+          { img: '../../static/images/y1.jpg' },
+          { img: '../../static/images/y2.jpg' },
+          { img: '../../static/images/y2.jpg' },
+          { img: '../../static/images/y3.jpg' },
+          { img: '../../static/images/y4.jpg' },
+          { img: '../../static/images/y5.jpg' },
+          { img: '../../static/images/y6.jpg' }
+        ]
+      },
+      {
+        date: '2018年12月',
+        imgs: [
+          { img: '../../static/images/y1.jpg' },
+          { img: '../../static/images/y1.jpg' },
+          { img: '../../static/images/y2.jpg' },
+          { img: '../../static/images/y2.jpg' },
+          { img: '../../static/images/y3.jpg' },
+          { img: '../../static/images/y4.jpg' },
+          { img: '../../static/images/y5.jpg' },
+          { img: '../../static/images/y6.jpg' }
+        ]
+      }
+    ]
+  }
+}
+</script>
+
+<style lang="less">
+.pages{
+  padding: 2%;
+}
+.icon_more{
+  float: right;
+  width: 20px;
+  height: 20px;
+  margin-top: 5px;
+}
+.scroll-view_H{
+  white-space: nowrap;
+}
+.scroll-view-item{
+  height: 100rpx;
+}
+.scroll-view-item_H{
+  display: inline-block;
+  width: 20%;
+  height: 100rpx;
+}
+.page_section{
+  height: 65px;
+}
+.pthots_date{
+  font-size: 16px;
+  height: 30px;
+  line-height: 30px;
+}
+</style>

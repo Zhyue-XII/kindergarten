@@ -1,0 +1,165 @@
+<template>
+<view class="box">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <repeat for="{{ imgs }}" key="index" item="item">
+      <swiper-item>
+        <view class="swiper-item {{item.t}}">
+          <image src='{{item.pic}}'></image>
+        </view>
+      </swiper-item>
+    </repeat>
+  </swiper>
+
+  <view class="menu page__bd">
+      <view class="page__bd">
+        <view class="weui-grids">
+            <repeat for="{{menu}}" key="index" item="item">
+                <navigator url="{{item.url}}" class="weui-grid" hover-class="weui-grid_active">
+                    <image class="weui-grid__icon" src="{{item.icon}}" />
+                    <view class="weui-grid__label">{{item.title}}</view>
+                </navigator>
+            </repeat>
+        </view>
+    </view>
+  </view>
+
+  <view class="contact">
+    <image class="school-logo" src="../../static/sys_icon/school3.png"></image>
+    <view class="text-view"><text>西安明珠幼儿园 点击右侧咨询</text></view>
+    <navigator url="" class="nav-img w" hover-class="weui-cell_active">
+     <image class="a" src="../../static/sys_icon/wx.png"></image>
+    </navigator> 
+    <navigator url="" class="nav-img t" hover-class="weui-cell_active">
+      <image class="b" src="../../static/sys_icon/tel.png"></image>
+    </navigator>
+  </view>
+
+  <view class="enter">
+    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+     <text>开学啦！！小朋友集合入口处..</text> 
+    </navigator> 
+  </view>
+
+  <view class="school"> <text> 校园动态</text> </view>
+  <view class="active">
+    <repeat for="{{dataBase}}" key="index" item="item">
+      <navigator url="/pages/index/article?{{item.id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+          <image class="weui-media-box__thumb" src="{{item.pic}}" />
+        </view>
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__title">{{item.title}}</view>
+            <view class="weui-media-box__desc">{{item.desc}}</view>
+          </view>
+      </navigator>
+    </repeat>
+  </view>
+</view>  
+</template>
+
+<script>
+  import wepy from 'wepy'
+  
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '宝贝计划'
+    }
+    data = {
+      indicatorDots: true,
+      vertical: false,
+      autoplay: true,
+      interval: 3000,
+      duration: 500,
+      menu: [
+        { id: 1, icon: '../../static/sys_icon/school.png', title: '学院简介', url: '/pages/index/school' },
+        { id: 2, icon: '../../static/sys_icon/lou.png', title: '实景展示' },
+        { id: 3, icon: '../../static/sys_icon/hert.png', title: '园丁风采', url: '/pages/index/teacher' },
+        { id: 4, icon: '../../static/sys_icon/mao.png', title: '教学展示', url: '/pages/index/show' },
+        { id: 5, icon: '../../static/sys_icon/cj.png', title: '营养食谱', url: '/pages/index/recipe' },
+        { id: 6, icon: '../../static/sys_icon/lab.png', title: '招生简章', url: '/pages/index/guide' }
+      ],
+      imgs: [],
+      dataBase: []
+    }
+    onLoad () {
+      this.imgs = [
+        { t: 'demo-text-1', pic: '../../static/images/y1.jpg' },
+        { t: 'demo-text-2', pic: '../../static/images/y2.jpg' },
+        { t: 'demo-text-3', pic: '../../static/images/y3.jpg' }
+      ]
+      this.dataBase = [
+        { id: 1, pic: '../../static/images/0.jpg', title: '红心幼儿园', desc: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。' },
+        { id: 2, pic: '../../static/images/0.jpg', title: '红心幼儿园', desc: '由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。' }
+      ]
+    }
+  }
+</script>
+<style lang="less" src="../../static/style/weui.wxss"></style>
+<style lang="less">
+  swiper {
+    display: block;
+    height: 180px;
+  }
+  .swiper-item image{
+    width: 100%;
+  }
+  .box{
+    background: #e6e6e6;
+    height: 100%;
+  }
+  .menu,.enter, .contact {
+    background: white;
+    margin-top: 4px;
+    color: #515151;
+    font-size: 16px
+  }
+  .active,.school{
+    background: white;
+  }
+  .school{
+    text-align: center;
+    margin-top: 4px;
+    padding-top: 10px;
+    font-size: 18px
+  }
+  .weui-media-box__title{
+    font-size: 16px
+  }
+  .contact{
+    overflow: hidden;
+    line-height: 60px;
+    height: 60px;
+    padding-left: 13px
+  }
+  .a{
+    width: 25px;
+    height: 25px
+  }
+  .b{
+    width: 20px;
+    height: 20px;
+  }
+  .nav-img{
+    float: right;
+    width: 40px;
+    height: 60px;
+    text-align: center;
+  }
+  .w{ padding-top: 8px }
+  .t{ padding-top: 6px}
+  .text-view{
+    width: 60%;
+    float: left;
+  }
+  .school-logo{
+    height: 30px !important;
+    width: 30px !important;
+    float: left;
+    padding: 15px 10px 0 0
+  }
+  .weui-footer{
+    margin-top:4px;
+    background:white;
+    padding:5%;
+  }
+</style>

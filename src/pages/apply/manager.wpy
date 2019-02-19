@@ -1,0 +1,117 @@
+<template>
+<view class="page">
+  <view class="notice">
+    <image class="m_icon lay" src="../../static/sys_icon/notice.png" />
+    <view class="m_title a">公告</view>
+    <view class="notice_text">
+        22332
+    </view>
+  </view>
+
+  <view class="manage_view">
+    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <view class="manager_txt">
+        <image class="m_icon" src="../../static/sys_icon/sign.png" />
+        <text class="m_title">考勤</text>
+        <item class="item">应到{{resData.shuoud}} 实到 <text style="color:green">{{resData.infact}}</text> 请假 <text style="color:red">{{resData.vacate}}</text></item>
+      </view>
+      <image class="icon_more" src="../../static/sys_icon/more.png" />
+    </navigator> 
+  </view>
+
+  <view class="schedule">
+    <image class="m_icon lay" src="../../static/sys_icon/schedule.png" />
+    <view class="m_title a">课表</view>
+    <view class="schedule_text">
+        1222
+    </view>
+  </view>
+
+  <view class="manage_view">
+    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <view class="manager_txt">
+        <image class="m_icon" src="../../static/sys_icon/homework.png" />
+        <text class="m_title">作业</text>
+        <item class="item homework">{{ homework }}</item>
+      </view>
+      <image class="icon_more" src="../../static/sys_icon/more.png" />
+    </navigator> 
+  </view>
+
+  <view class="manage_view m">
+    <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+      <view class="manager_txt">
+        <image class="m_icon" src="../../static/sys_icon/stu.png" />
+        <text class="m_title">学生</text>
+        <item class="item">学生查看，点评...</item>
+      </view>
+      <image class="icon_more" src="../../static/sys_icon/more.png" />
+    </navigator> 
+  </view>
+</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Manager extends wepy.page {
+  data = {
+    resData: {
+      shuoud: 23,
+      infact: 20,
+      vacate: 2
+    },
+    homework: '今天还没有发布作业..'
+  }
+}
+</script>
+
+<style lang="less">
+@import url("../../static/style/weui.wxss");
+.page{
+  background: #e6e6e6;
+  padding: 1px 0 4px
+}
+.notice,.manage_view,.schedule{
+  background: white;
+  margin-top: 4px;
+}
+.notice,.schedule{
+    padding: 2%;
+}
+.m_icon{
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+.icon_more{
+    float: right;
+    width: 30px;
+    height: 30px;
+}
+.a{ padding-left: 10%}
+.manager_txt{
+    width: 100%;
+}
+.item{font-size: 16px}
+.m_title{
+   margin: 0 5% 0 3%;
+   font-size: 16px;
+}
+.schedule_text{
+    min-height: 200px;
+}
+.lay{
+    margin-left: 2%
+}
+.notice_text{
+    min-height: 100px;
+}
+.notice_text,.schedule_text{
+    padding:2% 4%;
+    font-size: 16px;
+}
+.homework{
+    width: 60%;
+}
+</style>

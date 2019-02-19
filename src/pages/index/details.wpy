@@ -1,0 +1,143 @@
+<template>
+  <view class="box">
+    <view class="pic_view">
+      <image src="{{teacher.pic}}" />
+    </view>
+    <view class="card">
+      <view class="msg">
+        <text> {{teacher.name}} </text>  <text class="tel">{{teacher.tel}}</text>
+      </view>
+      <view class="psi"> {{teacher.position}}</view>
+      <view class="weui-flex btn_view">
+          <view class="weui-flex__item">
+            <image src="../../static/sys_icon/love.png" />
+            <view class="placeholder">人气: {{teacher.love}}</view>
+          </view>
+          <view class="weui-flex__item">
+            <image src="../../static/sys_icon/dz.png" />
+            <view class="placeholder">赞 {{teacher.dz}}</view>
+          </view>
+          <view class="weui-flex__item">
+            <image src="../../static/sys_icon/pl.png" />
+            <view class="placeholder">评论</view>
+          </view>
+      </view>
+    </view>
+    <view class="discuss">
+      <view class="title">家长评论</view>
+      <repeat for="{{discuss}}" index="index" item="item">
+        <view class="diacuss_view">
+          <view class="parents_msg">
+            <image src= "{{item.parents_pic}}"/>
+            <view>{{item.parents_name}}</view>
+          </view>
+          <view class="parents_state">{{item.parents_state}}</view>
+        </view>
+      </repeat>
+    </view>
+  </view>
+    
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Details extends wepy.page {
+  config = {
+    navigationBarTitleText: '老师名片 '
+  };
+  data = {
+    teacher: '',
+    discuss: []
+  };
+  onLoad () {
+    this.teacher = {
+      pic: '../../static/images/t1.jpg',
+      name: '杨轻清',
+      tel: '13526541256',
+      position: '西安市红心幼儿园小班班主任',
+      love: '13'
+    }
+    this.discuss = [
+      { parents_id: '1', parents_name: '张国伟', parents_state: '老师好！！！', parents_pic: '../../static/sys_icon/m.jpg' },
+      { parents_id: '2', parents_name: '梁笑笑', parents_state: '拉达克创建客户端的健康和简简单单客户端', parents_pic: '../../static/sys_icon/m.jpg' },
+      { parents_id: '3', parents_name: '张灵玉', parents_state: '健康和简简单单客户端', parents_pic: '../../static/sys_icon/m.jpg' }
+    ]
+  }
+}
+</script>
+
+<style lang="less">
+@import url("../../static/style/weui.wxss");
+
+.pic_view image{ 
+  width: 100%;
+  height: 310px;
+}
+.box{position: relative;width: 100%;}
+.card{
+  width: 70%;
+  margin: 0 auto;
+  border: 1px solid gainsboro;
+  box-shadow: 0 0 2px 2px gainsboro;
+  padding: 5%;
+  position: absolute;
+  top: 270px;
+  background: white;
+  left: 10%;
+  color: gray;
+  font-size: 16px
+}
+.msg{
+  height:50px;
+  line-height:40px;
+}
+.msg text{
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 10px
+}
+.btn_view{
+  text-align: center;
+  margin-top: 10%;
+}
+// .psi{text-align: center}
+.btn_view image{
+  width: 20px;
+  height: 20px;
+}
+.tel{ 
+  float: right;
+  color: #2aa515 !important;
+  font-size: 15px !important;
+  font-weight: 400 !important
+}
+.btn_view view{
+ font-size: 10px;
+}
+.discuss{
+  margin: 40% 2% 2% 2%;
+  padding: 2%;
+}
+.title {
+  margin-bottom: 2%
+}
+.diacuss_view image{
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+.parents_msg, .parents_msg view{
+  height: 50px;
+  line-height: 55px;
+}
+.parents_state{
+  padding-left: 50px;
+  font-size: 16px;
+  color: gray;
+}
+.diacuss_view{
+  border-top: 1px solid gainsboro;
+  padding-bottom: 3%;
+}
+</style>

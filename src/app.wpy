@@ -1,0 +1,79 @@
+<style lang="less">
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background: gainsboro
+}
+</style>
+
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+
+export default class extends wepy.app {
+  config = {
+    pages: [
+      'pages/index/index',
+      'pages/apply/manager',
+      'pages/apply/dynamic',
+      'pages/apply/photos',
+      'pages/apply/home',
+      'pages/index/school',
+      'pages/index/teacher',
+      'pages/index/details',
+      'pages/index/show',
+      'pages/index/recipe',
+      'pages/index/guide',
+      'pages/index/article'
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: '宝贝计划',
+      navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: '#757982',
+      selectedColor: '#0e932e',
+      borderStyle: 'white',
+      backgroundColor: '#fff',
+      list: [
+        {
+          pagePath: 'pages/apply/manager',
+          text: '管理',
+          iconPath: 'static/sys_icon/guanli.png',
+          selectedIconPath: 'static/sys_icon/guanli-sel.png'
+        },
+        {
+          pagePath: 'pages/apply/dynamic',
+          text: '圈子',
+          iconPath: 'static/sys_icon/quan.png',
+          selectedIconPath: 'static/sys_icon/quan-sel.png'
+        },
+        {
+          pagePath: 'pages/index/index',
+          text: '主页',
+          iconPath: 'static/sys_icon/home.png',
+          selectedIconPath: 'static/sys_icon/home-sel.png'
+        },
+        {
+          pagePath: 'pages/apply/photos',
+          text: '相册',
+          iconPath: 'static/sys_icon/photo.png',
+          selectedIconPath: 'static/sys_icon/photo-sel.png'
+        },
+        {
+          pagePath: 'pages/apply/home',
+          text: '我的',
+          iconPath: 'static/sys_icon/my.png',
+          selectedIconPath: 'static/sys_icon/my-sel.png'
+        }
+      ]
+    }
+  }
+}
+</script>

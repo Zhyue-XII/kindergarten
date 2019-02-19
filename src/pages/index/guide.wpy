@@ -1,0 +1,41 @@
+<template>
+<view class="page">
+  <image class="guide_img" src="../../static/images/zs.jpg" />
+  <view class="guide_text">
+      <view>招生简章</view>
+      <view class="guide_desc">{{notice}}</view>
+  </view>
+</view>
+</template>
+<script>
+import wepy from 'wepy'
+export default class Guide extends wepy.page {
+  config = {
+    navigationBarTitleText: '招生简章'
+  }
+  data = {
+    notice: ''
+  }
+  onLoad () {
+    this.notice = ' 小朋友年龄在3-5岁之间，在9.5日到9.7日携带小孩体检证明，户口本等相关证件来我园报名，凡是前5名报名者皆可活动精美小礼品（小书包，被褥...）'
+  }
+}
+</script>
+
+<style lang="less">
+.guide_img{
+  width: 100%;
+}
+.guide_text view:first-child{
+  text-align:center;
+  font-size:22px;
+  color:#575454;
+  font-weight:500;
+  padding:5%;
+}
+.guide_desc{
+  font-size: 14px;
+  padding: 4%;
+  text-indent:2em;
+}
+</style>

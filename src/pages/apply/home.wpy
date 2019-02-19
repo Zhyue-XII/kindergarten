@@ -1,0 +1,79 @@
+<template>
+<view class="page">
+  <view class="page_form">
+    <view class="wx_input">
+      <label>用户名</label>
+      <input placeholder="请输入用户名..." />
+    </view>
+    <view class="wx_input">
+      <label>密码</label>
+      <input type="password" placeholder="请输入密码..." />
+    </view>
+    <radio-group class="cheek_box" bindchange="radioChange">
+      <repeat for="{{radio_item}}">
+        <view class="radio_block">
+          <radio id="" value="{{item.name}}" checked="{{item.checked}}"></radio>
+          <label>{{item.name}}</label>
+        </view>
+      </repeat>
+    </radio-group>
+    <view class="btn_view">
+      <button class="weui-btn" @tap="jumpPage" type="primary"><text>提交</text></button>
+    </view>
+  </view>
+</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Home extends wepy.page {
+  config = {
+    navigationBarTitleText: '用户登陆'
+  };
+  data = {
+    radio_item: [
+      { id: '1', name: '老师账户', checked: 'ture' },
+      { id: '2', name: '家长账户' }
+    ]
+  }
+  methods = {
+    radioChange (e) {
+      console.log(12)
+    },
+
+    jumpPage () {
+      console.log('22')
+    }
+  }
+}
+</script>
+<style lang="less">
+@import url("../../static/style/weui.wxss");
+.page_form{
+  padding: 4%
+}
+.btn_view{
+    margin-top: 4%
+}
+.wx_input{
+  border-bottom: 1px solid #1afa29;
+  padding: 2%
+}
+.wx_input label{
+  float: left;
+  width: 30%;
+}
+button{
+  font-size: 15px;
+}
+.cheek_box{
+  overflow: hidden;
+  padding-top: 2%;
+}
+.radio_block{
+  float: left;
+  width: 50%;
+}
+
+</style>
